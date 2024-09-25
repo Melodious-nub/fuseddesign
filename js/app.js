@@ -1,22 +1,21 @@
 const inputs = document.querySelectorAll(".input");
 
 function focusFunc() {
-  let parent = this.parentNode;
-  parent.classList.add("focus");
+    let parent = this.parentNode;
+    parent.classList.add("focus");
 }
 
 function blurFunc() {
-  let parent = this.parentNode;
-  if (this.value == "") {
-    parent.classList.remove("focus");
-  }
+    let parent = this.parentNode;
+    if (this.value === "") {
+        parent.classList.remove("focus");
+    }
 }
 
 inputs.forEach((input) => {
-  input.addEventListener("focus", focusFunc);
-  input.addEventListener("blur", blurFunc);
+    input.addEventListener("focus", focusFunc);
+    input.addEventListener("blur", blurFunc);
 });
-
 
 document.addEventListener("DOMContentLoaded", function () {
     const contactForm = document.getElementById("contactForm");
@@ -25,18 +24,32 @@ document.addEventListener("DOMContentLoaded", function () {
     contactForm.addEventListener("submit", function (event) {
         event.preventDefault(); // Prevent the default form submission
 
-        // Optionally, you can do an AJAX submission here if needed.
-        // For this example, we'll just show the success message.
+        // Extract form data and send the form using Formspree's API
+        const formData = new FormData(contactForm);
 
-        // Show the success message
-        successMessage.style.display = "block";
+        fetch(contactForm.action, {
+            method: "POST",
+            body: formData,
+            headers: {
+                'Accept': 'application/json'
+            }
+        }).then(function (response) {
+            if (response.ok) {
+                // Show the success message
+                successMessage.style.display = "block";
 
-        // Reset the form fields
-        contactForm.reset();
+                // Reset the form fields
+                contactForm.reset();
 
-        // Optional: Hide the success message after a few seconds
-        setTimeout(function () {
-            successMessage.style.display = "none";
-        }, 3000);
+                // Hide the success message after a few seconds
+                setTimeout(function () {
+                    successMessage.style.display = "none";
+                }, 3000);
+            } else {
+                console.error('Form submission error');
+            }
+        }).catch(function (error) {
+            console.error('Form submission failed:', error);
+        });
     });
 });
