@@ -24,3 +24,24 @@ $(function () {
         // console.log("Countdown finished!");
     });
 });
+
+
+$(document).ready(function () {
+    $('#contactForm').on('submit', function (event) {
+        event.preventDefault(); // Prevent the default form submission
+
+        // Simulate form submission process (you can replace this with actual submission logic)
+        // For example, you can use AJAX to send the form data to your backend
+
+        // Show the success message
+        $('#successMessage').fadeIn();
+
+        // Optionally reset the form fields after showing the message
+        $(this).trigger('reset');
+
+        // If you want to hide the success message after a few seconds, uncomment the next lines:
+        // setTimeout(function() {
+        //     $('#successMessage').fadeOut();
+        // }, 3000);
+    });
+});

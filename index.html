@@ -120,24 +120,25 @@
                                 <span class="circle one"></span>
                                 <span class="circle two"></span>
                       
-                                <form action="index.html" method="POST" netlify autocomplete="off">
+                                <form action="index.html" autocomplete="off" id="contactForm">
                                     <h3 style="color: black;">Contact us</h3>
                                     <div class="input-container">
-                                      <input type="text" name="name" class="input" required />
-                                      <label for="">Name</label>
-                                      <span>Name</span>
+                                        <input type="text" name="name" class="input" required />
+                                        <label for="">Name</label>
+                                        <span>Name</span>
                                     </div>
                                     <div class="input-container">
-                                      <input type="email" name="email" class="input" required />
-                                      <label for="">Email</label>
-                                      <span>Email</span>
+                                        <input type="email" name="email" class="input" required />
+                                        <label for="">Email</label>
+                                        <span>Email</span>
                                     </div>
                                     <div class="input-container textarea">
-                                      <textarea name="message" class="input" required></textarea>
-                                      <label for="">Message</label>
-                                      <span>Message</span>
+                                        <textarea name="message" class="input" required></textarea>
+                                        <label for="">Message</label>
+                                        <span>Message</span>
                                     </div>
                                     <input type="submit" value="Send" class="btn" />
+                                    <div id="successMessage" style="display: none; color: green; margin-top: 1rem;">Your message has been sent successfully!</div>
                                 </form>
                               </div>
                             </div>
