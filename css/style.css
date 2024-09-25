@@ -239,6 +239,10 @@ textarea.input {
     color: white !important;
   }
 
+  .social-icons a:focus {
+    color: white !important;
+  }
+
 .contact-info:before {
   content: "";
   position: absolute;
